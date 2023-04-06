@@ -15,7 +15,7 @@
       multiple active-class=""
       >
         <div 
-        v-for="tarefa, index in tarefas" 
+        v-for="tarefa, index in $store.state.tarefas" 
         :key="index"
         >
           <Tarefa 
@@ -35,26 +35,19 @@ export default {
   components: {
     Tarefa
   },
+
   data() {
     return {
       campoInput: null,
-      tarefas: [
-        { titulo: "Comprar braços mecânico", concluido: false },
-        { titulo: "Comprar mesa para o setup", concluido: false },
-        { titulo: "Comprar cadeira presidente ", concluido: false },
-      ]
     }
   },
+
   methods: {
     handleAddTarefa() {
-      if(this.campoInput){
-      this.tarefas.push({
-        titulo:this.campoInput, 
-        concluido: false
-      })
+      this.$store.commit('adicionaTarefa',this.campoInput)
       this.campoInput = null;
-      }
     }
   }
+
 }
 </script>
