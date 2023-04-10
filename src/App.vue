@@ -4,15 +4,27 @@
       
     </v-navigation-drawer> -->
     <v-navigation-drawer v-model="drawer" app>
-      <v-toolbar flat>
+      <v-img src="https://picsum.photos/1920/1080?random" dark class="text-center">
+
         <v-list>
+          <v-avatar size="100">
+            <img
+              src="https://imgs.search.brave.com/cQEQgy4HT3TzDRVwUizfyIP6h3-83c40OqWKWvKIrHU/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9pbWcu/ZWNhcnRlbGVyYS5j/b20vbm90aWNpYXMv/NjA3MDAvNjA3MzQt/bS5qcGc"
+              alt="Ricky">
+          </v-avatar>
           <v-list-item>
-            <v-list-item-title class="title">
-              Application
-            </v-list-item-title>
+            <v-list-item-content>
+              <v-list-item-title class="title">
+                Vue.js
+              </v-list-item-title>
+              <v-list-item-subtitle>
+                Lista de Tarefas
+              </v-list-item-subtitle>
+            </v-list-item-content>
           </v-list-item>
         </v-list>
-      </v-toolbar>
+
+      </v-img>
 
       <v-divider></v-divider>
 
@@ -34,34 +46,18 @@
 
       <v-toolbar-title>Application</v-toolbar-title>
     </v-app-bar> -->
-    <v-app-bar 
-      color="#fcb69f" 
-      dark
-      src="https://picsum.photos/1920/1080?random"
-      app
-      prominent
-    >
+    <v-app-bar color="#fcb69f" dark src="https://picsum.photos/1920/1080?random" app prominent height="185">
       <template v-slot:img="{ props }">
         <v-img v-bind="props" gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.6)"></v-img>
       </template>
 
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-app-bar-title>Title</v-app-bar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
+      <center>
+        <v-app-bar-title class="mt-16">
+          <InputTarefa />
+        </v-app-bar-title>
+      </center>
     </v-app-bar>
 
     <v-main>
@@ -71,9 +67,14 @@
 </template>
 
 <script>
+import InputTarefa from './components/tarefas/InputTarefa.vue';
+
 export default {
+  components: {
+    InputTarefa
+  },
   data: () => ({
-    drawer: null,
+    drawer: false,
     items: [
       { title: 'Dashboard', icon: 'mdi-view-dashboard', to: '/' },
       { title: 'About', icon: 'mdi-help-box', to: '/sobre' },
